@@ -74,7 +74,10 @@ function deviceMoved() {
 function deviceTurned() {
   // turnAxis = "Z";
   // threshVals[1] = turnAxis;
-  statusLabels[1].style("color", "green");
+  if (turnAxis === "Z") {
+    console.log("Z-axis turned");
+    statusLabels[1].style("color", "green");
+  }
 }
 function deviceShaken() {
   shaketimer = millis();
