@@ -50,19 +50,7 @@ brass.createDSP(audioContext, 1024).then((node) => {
 //==========================================================================================
 
 function accelerationChange(accx, accy, accz) {
-  // Check if phone is pointing straight up
-  // AccelerationZ should be close to 9.8 (or slightly higher if held firmly)
-  const upwardThreshold = 8.5; // Adjust this value as needed
-
-  if (accz > upwardThreshold) {
-    // Add a debounce timer to avoid playing sound too frequently
-    const currentTime = millis();
-    if (currentTime - lastUpwardTrigger > 500) {
-      // 500ms cooldown
-      playAudio();
-      console.log("Phone pointing up! AccZ:", accz);
-    }
-  }
+  playAudio();
 }
 
 function rotationChange(rotx, roty, rotz) {}
