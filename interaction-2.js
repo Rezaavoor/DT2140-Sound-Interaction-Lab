@@ -57,7 +57,7 @@ function accelerationChange(accx, accy, accz) {
 
 function rotationChange(rotx, roty, rotz) {
   if (rotx < 95 && rotx > 85) {
-    playAudio();
+    playAudio(5000);
   }
 }
 
@@ -98,7 +98,7 @@ function getMinMaxParam(address) {
 //
 //==========================================================================================
 
-function playAudio() {
+function playAudio(length = 100) {
   if (!dspNode) {
     return;
   }
@@ -108,7 +108,7 @@ function playAudio() {
   dspNode.setParamValue("/rain/volume", 0.5);
   setTimeout(() => {
     dspNode.setParamValue("/rain/volume", 0);
-  }, 100);
+  }, length);
 }
 
 //==========================================================================================
