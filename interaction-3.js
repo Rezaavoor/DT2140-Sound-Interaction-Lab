@@ -12,7 +12,7 @@ let dspNodeParams = null;
 let jsonParams = null;
 
 // Change here to ("tuono") depending on your wasm file name
-const dspName = "brass";
+const dspName = "door";
 const instance = new FaustWasm2ScriptProcessor(dspName);
 
 console.log("this is interaction 3! NEW");
@@ -27,7 +27,7 @@ if (typeof module === "undefined") {
 }
 
 // The name should be the same as the WASM file, so change tuono with brass if you use brass.wasm
-brass.createDSP(audioContext, 1024).then((node) => {
+door.createDSP(audioContext, 1024).then((node) => {
   dspNode = node;
   dspNode.connect(audioContext.destination);
   console.log("params: ", dspNode.getParams());
@@ -56,9 +56,9 @@ function accelerationChange(accx, accy, accz) {
 }
 
 function rotationChange(rotx, roty, rotz) {
-  //   if (rotx < 10) {
-  //     playAudio();
-  //   }
+  if (rotz > 60 && rotz < 70) {
+    playAudio();
+  }
 }
 
 function mousePressed() {
@@ -72,13 +72,14 @@ function deviceMoved() {
 }
 
 function deviceTurned() {
-  threshVals[1] = turnAxis;
+  // turnAxis = "Z";
+  // threshVals[1] = turnAxis;
   statusLabels[1].style("color", "green");
 }
 function deviceShaken() {
   shaketimer = millis();
   statusLabels[0].style("color", "blue");
-  playAudio();
+  // playAudio();
 }
 
 function getMinMaxParam(address) {
@@ -107,7 +108,10 @@ function playAudio(pressure) {
     return;
   }
   console.log(pressure);
-  dspNode.setParamValue("/brass/blower/pressure", pressure);
+  dspNode.setParamValue("/door/door", 1);
+  setTimeout(() => {
+    dspNode.setParamValue("/door/door", 0);
+  }, length);
 }
 
 //==========================================================================================
