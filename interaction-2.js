@@ -105,7 +105,7 @@ function playAudio() {
   if (audioContext.state === "suspended") {
     return;
   }
-  dspNode.setParamValue("/rain/volume", 1);
+  dspNode.setParamValue("/rain/volume", 0.5);
   setTimeout(() => {
     dspNode.setParamValue("/rain/volume", 0);
   }, 100);
