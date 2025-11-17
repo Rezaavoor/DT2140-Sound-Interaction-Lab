@@ -15,6 +15,8 @@ let jsonParams = null;
 const dspName = "drop";
 const instance = new FaustWasm2ScriptProcessor(dspName);
 
+console.log("INT 1!!!!");
+
 // output to window or npm package module
 if (typeof module === "undefined") {
   window[dspName] = instance;
