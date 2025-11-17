@@ -57,7 +57,7 @@ function accelerationChange(accx, accy, accz) {
 
 function rotationChange(rotx, roty, rotz) {
   //   if (rotx < 10) {
-  //   playAudio();
+  //     playAudio();
   //   }
 }
 
@@ -68,7 +68,7 @@ function mousePressed() {
 
 function deviceMoved() {
   movetimer = millis();
-  statusLabels[2].style("color", "pink");
+  statusLabels[2].style("color", "red");
 }
 
 function deviceTurned() {
