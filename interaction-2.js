@@ -114,7 +114,7 @@ function playAudio() {
 function stopAudio(length = 100) {
   setTimeout(() => {
     // dspNode.setParamValue("/torpedo/trigger", 0);
-    dspNode.setParamValue("/rain/volume", 0);
+    dspNode.setParamValue("/rain/volume", 0.3);
   }, length);
 }
 
