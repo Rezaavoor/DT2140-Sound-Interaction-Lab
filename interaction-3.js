@@ -54,9 +54,9 @@ function accelerationChange(accx, accy, accz) {
 }
 
 function rotationChange(rotx, roty, rotz) {
-  if (rotx < 10) {
-    playAudio();
-  }
+  //   if (rotx < 10) {
+  //   playAudio();
+  //   }
 }
 
 function mousePressed() {
@@ -75,7 +75,7 @@ function deviceTurned() {
 function deviceShaken() {
   shaketimer = millis();
   statusLabels[0].style("color", "pink");
-  //   playAudio();
+  playAudio();
 }
 
 function getMinMaxParam(address) {
