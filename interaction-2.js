@@ -12,7 +12,7 @@ let dspNodeParams = null;
 let jsonParams = null;
 
 // Change here to ("tuono") depending on your wasm file name
-const dspName = "bells";
+const dspName = "rain";
 const instance = new FaustWasm2ScriptProcessor(dspName);
 
 // output to window or npm package module
@@ -24,8 +24,8 @@ if (typeof module === "undefined") {
   module.exports = exp;
 }
 
-// The name should be the same as the WASM file, so change tuono with brass if you use brass.wasm
-bells.createDSP(audioContext, 1024).then((node) => {
+// The name should be the same as the WASM file, so change rain with brass if you use brass.wasm
+rain.createDSP(audioContext, 1024).then((node) => {
   dspNode = node;
   dspNode.connect(audioContext.destination);
   console.log("params: ", dspNode.getParams());
@@ -105,9 +105,9 @@ function playAudio() {
   if (audioContext.state === "suspended") {
     return;
   }
-  dspNode.setParamValue("/englishBell/gate", 1);
+  dspNode.setParamValue("/rain/volume", 1);
   setTimeout(() => {
-    dspNode.setParamValue("/englishBell/gate", 0);
+    dspNode.setParamValue("/rain/volume", 0);
   }, 100);
 }
 
