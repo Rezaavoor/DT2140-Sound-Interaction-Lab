@@ -50,13 +50,17 @@ brass.createDSP(audioContext, 1024).then((node) => {
 //==========================================================================================
 
 function accelerationChange(accx, accy, accz) {
-  playAudio();
+  //   playAudio();
 }
 
-function rotationChange(rotx, roty, rotz) {}
+function rotationChange(rotx, roty, rotz) {
+  if (rotx < 10) {
+    playAudio();
+  }
+}
 
 function mousePressed() {
-  playAudio(mouseX / windowWidth);
+  //   playAudio(mouseX / windowWidth);
   // Use this for debugging from the desktop!
 }
 
@@ -71,7 +75,7 @@ function deviceTurned() {
 function deviceShaken() {
   shaketimer = millis();
   statusLabels[0].style("color", "pink");
-  playAudio();
+  //   playAudio();
 }
 
 function getMinMaxParam(address) {
