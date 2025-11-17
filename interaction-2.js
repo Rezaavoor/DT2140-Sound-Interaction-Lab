@@ -56,7 +56,7 @@ function accelerationChange(accx, accy, accz) {
 }
 
 function rotationChange(rotx, roty, rotz) {
-  if (rotx < 95 && rotx > 85) {
+  if (rotx < 90 && rotx > 80) {
     playAudio();
   }
 }
@@ -105,7 +105,7 @@ function playAudio(length = 100) {
   if (audioContext.state === "suspended") {
     return;
   }
-  dspNode.setParamValue("/torpedo/trigger", 0.5);
+  dspNode.setParamValue("/torpedo/trigger", 1);
   setTimeout(() => {
     dspNode.setParamValue("/torpedo/trigger", 0);
   }, length);

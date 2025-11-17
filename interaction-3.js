@@ -73,6 +73,7 @@ function deviceMoved() {
 
 function deviceTurned() {
   threshVals[1] = turnAxis;
+  statusLabels[1].style("color", "green");
 }
 function deviceShaken() {
   shaketimer = millis();
