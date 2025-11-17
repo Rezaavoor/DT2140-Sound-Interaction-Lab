@@ -12,7 +12,7 @@ let dspNodeParams = null;
 let jsonParams = null;
 
 // Change here to ("tuono") depending on your wasm file name
-const dspName = "torpedo";
+const dspName = "rain";
 const instance = new FaustWasm2ScriptProcessor(dspName);
 
 // output to window or npm package module
@@ -25,7 +25,7 @@ if (typeof module === "undefined") {
 }
 
 // The name should be the same as the WASM file, so change rain with brass if you use brass.wasm
-torpedo.createDSP(audioContext, 1024).then((node) => {
+rain.createDSP(audioContext, 1024).then((node) => {
   dspNode = node;
   dspNode.connect(audioContext.destination);
   console.log("params: ", dspNode.getParams());
@@ -58,6 +58,8 @@ function accelerationChange(accx, accy, accz) {
 function rotationChange(rotx, roty, rotz) {
   if (rotx < 90 && rotx > 80) {
     playAudio();
+  } else {
+    stopAudio();
   }
 }
 
@@ -98,16 +100,21 @@ function getMinMaxParam(address) {
 //
 //==========================================================================================
 
-function playAudio(length = 100) {
+function playAudio() {
   if (!dspNode) {
     return;
   }
   if (audioContext.state === "suspended") {
     return;
   }
-  dspNode.setParamValue("/torpedo/trigger", 1);
+  //   dspNode.setParamValue("/torpedo/trigger", 1);
+  dspNode.setParamValue("/rain/volume", 1);
+}
+
+function stopAudio(length = 100) {
   setTimeout(() => {
-    dspNode.setParamValue("/torpedo/trigger", 0);
+    // dspNode.setParamValue("/torpedo/trigger", 0);
+    dspNode.setParamValue("/rain/volume", 0);
   }, length);
 }
 
