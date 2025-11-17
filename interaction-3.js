@@ -15,7 +15,7 @@ let jsonParams = null;
 const dspName = "brass";
 const instance = new FaustWasm2ScriptProcessor(dspName);
 
-console.log("this is interaction 3!");
+console.log("this is interaction 3! NEW");
 
 // output to window or npm package module
 if (typeof module === "undefined") {
